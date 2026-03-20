@@ -48,3 +48,39 @@ a {
   background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
 }
+
+/* Услуги: раскрытие контента при hover (desktop_2) */
+.service-card-hover .hover-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-hover .static-content {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card-hover:hover .hover-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-card-hover:hover .static-content {
+    transform: translateY(-10px);
+  }
+}
+
+/* Тач: весь контент сразу виден */
+@media (hover: none), (pointer: coarse) {
+  .service-card-hover .hover-content {
+    opacity: 1;
+    transform: none;
+  }
+
+  .service-card-hover .static-content {
+    transform: none;
+  }
+}
