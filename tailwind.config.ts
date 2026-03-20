@@ -1,0 +1,51 @@
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#000f22',
+        tertiary: '#1c0a00',
+        secondary: '#0059bb',
+        error: '#ba1a1a',
+        background: '#f7f9fb',
+        surface: '#f7f9fb',
+        'surface-bright': '#f7f9fb',
+        'surface-dim': '#d8dadc',
+        'surface-container': '#eceef0',
+        'surface-container-high': '#e6e8ea',
+        'surface-container-highest': '#e0e3e5',
+        'surface-container-low': '#f2f4f6',
+        'surface-container-lowest': '#ffffff',
+        'surface-variant': '#e0e3e5',
+        'outline-variant': '#c4c6ce',
+        outline: '#74777e',
+        'primary-container': '#0a2540',
+        'secondary-container': '#0070ea',
+        'secondary-fixed-dim': '#adc7ff',
+        'secondary-fixed': '#d8e2ff',
+        'primary-fixed-dim': '#b0c8eb',
+        'primary-fixed': '#d2e4ff',
+        'on-primary': '#ffffff',
+        'on-secondary': '#ffffff',
+        'on-secondary-container': '#fefcff',
+        'on-background': '#191c1e',
+        'on-surface': '#191c1e',
+        'on-surface-variant': '#43474d',
+      },
+      fontFamily: {
+        headline: ['Manrope', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        label: ['Inter', 'sans-serif'],
+      },
+      borderRadius: {
+        DEFAULT: '0.125rem',
+        lg: '0.25rem',
+        xl: '0.5rem',
+        full: '0.75rem',
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config
