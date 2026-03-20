@@ -48,9 +48,9 @@ export function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {[
-              ['01', 'contact_phone', 'Contacted', 'Мгновенный отклик. Мы принимаем вашу заявку и назначаем инженера в течение 15 минут.'],
-              ['02', 'forum', 'Discussed', 'Профессиональный аудит. Разрабатываем точное техническое решение под ваш бюджет.'],
-              ['03', 'task_alt', 'Done', 'Безупречный результат. Сдача объекта с гарантией качества и полной документацией.'],
+              ['01', 'contact_phone', 'Связь', 'Мгновенный отклик. Мы принимаем вашу заявку и назначаем инженера в течение 15 минут.'],
+              ['02', 'forum', 'Обсуждение', 'Профессиональный аудит. Разрабатываем точное техническое решение под ваш бюджет.'],
+              ['03', 'task_alt', 'Готово', 'Безупречный результат. Сдача объекта с гарантией качества и полной документацией.'],
             ].map(([num, icon, title, text]) => (
               <div key={num} className="group relative overflow-hidden rounded-xl bg-surface-container-lowest p-10 ghost-border">
                 <span className="absolute right-6 top-4 font-headline text-6xl font-black text-surface-container opacity-50 transition-colors duration-500 group-hover:text-secondary">
