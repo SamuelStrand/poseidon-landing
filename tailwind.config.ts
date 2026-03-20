@@ -9,6 +9,8 @@ export default {
         tertiary: '#1c0a00',
         secondary: '#0059bb',
         error: '#ba1a1a',
+        'error-container': '#ffdad6',
+        'on-error-container': '#93000a',
         background: '#f7f9fb',
         surface: '#f7f9fb',
         'surface-bright': '#f7f9fb',
