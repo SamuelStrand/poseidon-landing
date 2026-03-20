@@ -7,7 +7,9 @@
 - `/` — главная
 - `/services` — услуги
 - `/cases` — кейсы
-- `/about` — о компании и контакты
+- `/about` — о компании
+- `/contacts` — контакты
+- `/private-clients`, `/business-clients` — лендинги по сегментам
 
 ## Запуск
 

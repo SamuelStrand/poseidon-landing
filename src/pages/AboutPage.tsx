@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export function AboutPage() {
   return (
     <>
@@ -67,40 +69,21 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section id="contacts" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <div className="flex flex-col gap-6 md:col-span-5">
-            <div className="flex min-h-[320px] flex-col justify-between rounded-xl bg-primary p-10 text-on-primary">
-              <div>
-                <h2 className="mb-4 font-headline text-3xl font-bold">Свяжитесь с экспертом</h2>
-                <p className="mb-8 opacity-70">
-                  Мы на связи круглосуточно для решения экстренных задач и планового проектирования.
-                </p>
-              </div>
-              <div className="flex flex-col gap-4">
-                <a className="flex items-center gap-4 text-2xl font-bold transition-colors hover:text-secondary-fixed" href="tel:+79990000000">
-                  <span className="material-symbols-outlined">call</span>
-                  +7 (999) 000-00-00
-                </a>
-                <div className="flex gap-4">
-                  <a className="flex flex-1 items-center justify-center gap-3 rounded-xl bg-surface-container-highest/20 p-4 transition-all hover:bg-surface-container-highest/30" href="#">WhatsApp</a>
-                  <a className="flex flex-1 items-center justify-center gap-3 rounded-xl bg-surface-container-highest/20 p-4 transition-all hover:bg-surface-container-highest/30" href="#">Telegram</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="relative min-h-[400px] overflow-hidden rounded-xl bg-surface-container-low md:col-span-7">
-            <div className="absolute inset-0 opacity-60 grayscale transition-all duration-700 hover:grayscale-0">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFWNg8OA2yKZeKmddUUmfz6TbYQMA_eGayb7SaT9fuMeRyuDkInJCJIarVKRzHIMGTKr7aKg3Tf3TRSxfpgdKAjPQCAUuqcqGGrKTuYAkCjZs9JopNshMw_NcldXauLunrguGjOaBiI4tlQstBHEtx94q0uxw34gBrgHx4UHVpf9k7Al9aQfaBUYPFCHF6CeTsdJCt-Lvnm0qlvhPqI4j_0CkO4qfmGA5_ZILkyF6EPSqegd5vSzdz8V6u4oi76aMqQGcJRlpwm6w6"
-                alt="Map Location"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="ghost-border absolute bottom-6 left-6 right-6 rounded-lg bg-surface-container-lowest/90 p-6 backdrop-blur-md">
-              <h4 className="font-headline font-bold">Центральный офис</h4>
-              <p className="text-sm text-on-surface-variant">Москва, ул. Инженерная, д. 42, БЦ «Поток»</p>
-            </div>
+      <section id="contacts" className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+        <div className="relative overflow-hidden rounded-2xl bg-primary-container px-8 py-12 text-center text-on-primary md:px-16 md:py-16">
+          <div className="bg-grid-white pointer-events-none absolute inset-0 opacity-30" />
+          <div className="relative z-10 mx-auto max-w-2xl">
+            <h2 className="font-headline text-3xl font-bold md:text-4xl">Нужны контакты и карта?</h2>
+            <p className="mt-4 text-primary-fixed-dim">
+              Вся информация для связи, мессенджеры и адрес офиса — на отдельной странице.
+            </p>
+            <Link
+              to="/contacts"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-secondary px-8 py-4 font-headline font-bold text-white shadow-lg shadow-secondary/30 transition hover:bg-secondary-container"
+            >
+              Перейти в контакты
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </Link>
           </div>
         </div>
       </section>

@@ -235,7 +235,7 @@ export function ServicesPage() {
               Позвонить
             </a>
             <Link
-              to="/about#contacts"
+              to="/contacts"
               className="rounded-md bg-white/10 px-8 py-4 font-bold text-white backdrop-blur-sm transition hover:bg-white/20"
             >
               Контакты

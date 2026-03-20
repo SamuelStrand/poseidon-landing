@@ -26,7 +26,7 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-6 lg:flex">
-          <a className="font-bold text-slate-900" href={`tel:${contactLinks.phone.replace(/\D/g, '')}`}>
+          <a className="font-bold text-slate-900" href={`tel:${contactLinks.phoneTel}`}>
             {contactLinks.phone}
           </a>
           <a href={contactLinks.whatsapp} className="rounded-md bg-primary px-6 py-2 font-bold text-on-primary">
