@@ -1,4 +1,18 @@
+import { useRef } from 'react'
+import { Link } from 'react-router-dom'
+
 export function HomePage() {
+  const projectsTrackRef = useRef<HTMLDivElement | null>(null)
+
+  const scrollProjects = (direction: 'left' | 'right') => {
+    if (!projectsTrackRef.current) return
+    const cardWidth = 450
+    const gap = 24
+    const delta = cardWidth + gap
+    const left = direction === 'left' ? -delta : delta
+    projectsTrackRef.current.scrollBy({ left, behavior: 'smooth' })
+  }
+
   return (
     <>
       <section className="relative flex min-h-[870px] items-center overflow-hidden bg-primary-container text-on-primary">
@@ -77,7 +91,11 @@ export function HomePage() {
       <section className="bg-surface-container-low py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <article className="group relative overflow-hidden rounded-2xl bg-surface-container-lowest p-12 shadow-sm transition-all duration-500 hover:-translate-y-2">
+            <Link
+              to="/private-clients"
+              aria-label="Перейти к услугам для частных клиентов"
+              className="group relative block overflow-hidden rounded-2xl bg-surface-container-lowest p-12 shadow-sm transition-all duration-500 hover:-translate-y-2"
+            >
               <div className="absolute right-0 top-0 p-8 opacity-10 transition-transform duration-700 group-hover:scale-110">
                 <span className="material-symbols-outlined text-9xl text-primary">home</span>
               </div>
@@ -96,12 +114,16 @@ export function HomePage() {
                   фильтрация
                 </li>
               </ul>
-              <button className="mt-8 flex items-center gap-2 font-bold text-secondary transition-all group-hover:gap-4">
+              <span className="mt-8 inline-flex items-center gap-2 font-bold text-secondary transition-all group-hover:gap-4">
                 Узнать больше
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </article>
-            <article className="group relative overflow-hidden rounded-2xl bg-primary p-12 shadow-sm transition-all duration-500 hover:-translate-y-2">
+              </span>
+            </Link>
+            <Link
+              to="/business-clients"
+              aria-label="Перейти к услугам для бизнеса"
+              className="group relative block overflow-hidden rounded-2xl bg-primary p-12 shadow-sm transition-all duration-500 hover:-translate-y-2"
+            >
               <div className="absolute right-0 top-0 p-8 opacity-20 transition-transform duration-700 group-hover:scale-110">
                 <span className="material-symbols-outlined text-9xl text-white">apartment</span>
               </div>
@@ -120,11 +142,11 @@ export function HomePage() {
                   инженерных систем
                 </li>
               </ul>
-              <button className="mt-8 flex items-center gap-2 font-bold text-white transition-all group-hover:gap-4">
+              <span className="mt-8 inline-flex items-center gap-2 font-bold text-white transition-all group-hover:gap-4">
                 Узнать больше
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </article>
+              </span>
+            </Link>
           </div>
         </div>
       </section>
@@ -177,15 +199,25 @@ export function HomePage() {
             <p className="text-primary-fixed-dim">Галерея реализованных объектов премиум-класса</p>
           </div>
           <div className="flex gap-4">
-            <button className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10">
+            <button
+              type="button"
+              aria-label="Показать предыдущий проект"
+              onClick={() => scrollProjects('left')}
+              className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10"
+            >
               <span className="material-symbols-outlined">chevron_left</span>
             </button>
-            <button className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10">
+            <button
+              type="button"
+              aria-label="Показать следующий проект"
+              onClick={() => scrollProjects('right')}
+              className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10"
+            >
               <span className="material-symbols-outlined">chevron_right</span>
             </button>
           </div>
         </div>
-        <div className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-8">
+        <div ref={projectsTrackRef} className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-8">
           {[
             [
               'Жилой комплекс',
@@ -204,13 +236,13 @@ export function HomePage() {
             ],
           ].map(([kind, title, image]) => (
             <div key={title} className="w-80 flex-none md:w-[450px]">
-              <div className="group relative cursor-pointer overflow-hidden rounded-xl">
+              <Link to="/cases" className="group relative block cursor-pointer overflow-hidden rounded-xl" aria-label={`Открыть кейс: ${title}`}>
                 <img src={image} alt={title} className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8">
                   <span className="mb-2 text-xs font-bold uppercase tracking-widest text-secondary-fixed-dim">{kind}</span>
                   <h4 className="text-xl font-bold">{title}</h4>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
