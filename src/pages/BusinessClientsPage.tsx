@@ -40,7 +40,7 @@ export function BusinessClientsPage() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-4">
-          <a href="tel:+79990000000" className="rounded-md bg-secondary px-8 py-4 font-bold text-white">
+          <a href="tel:+7 747 863 1598" className="rounded-md bg-secondary px-8 py-4 font-bold text-white">
             Обсудить проект
           </a>
           <Link to="/cases" className="rounded-md bg-white/10 px-8 py-4 font-bold text-white">

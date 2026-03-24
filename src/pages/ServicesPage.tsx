@@ -189,7 +189,7 @@ export function ServicesPage() {
                   {item.description}
                 </p>
                 <a
-                  href="tel:+79990000000"
+                  href="tel:+7 747 863 1598"
                   className={`flex w-full items-center justify-center gap-2 rounded-md py-4 font-bold ${
                     item.variant === 'emergency'
                       ? 'bg-error text-white hover:bg-error/90'
@@ -229,7 +229,7 @@ export function ServicesPage() {
           </div>
           <div className="flex shrink-0 flex-wrap justify-center gap-3">
             <a
-              href="tel:+79990000000"
+              href="tel:+7 747 863 1598"
               className="rounded-md bg-secondary px-8 py-4 font-bold text-white shadow-lg shadow-secondary/25 transition hover:bg-secondary-container"
             >
               Позвонить

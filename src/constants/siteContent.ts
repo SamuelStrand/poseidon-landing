@@ -6,10 +6,10 @@ export const navItems = [
 ]
 
 export const contactLinks = {
-  phone: '+7 (999) 000-00-00',
-  phoneTel: '+79990000000',
-  whatsapp: 'https://wa.me/79990000000',
-  telegram: 'https://t.me/',
+  phone: '+7 747 863 1598',
+  phoneTel: '+7 747 863 1598',
+  whatsapp: 'https://wa.me/77478631598?text=Здравствуйте! Пишу вам с сайта poseidonsanteh.kz, хочу узнать подробнее о ваших сантехнических услугах. Можете, пожалуйста, прислать информацию?',
+  instagram: 'https://www.instagram.com/poseidonsanteh?igsh=MWliMm01MWRnNDRmZg==',
   email: 'info@poseidon-std.ru',
   address: 'Алматы ул. Гоголя 253',
   hours: 'Пн—Вс 09:00—21:00',

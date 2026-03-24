@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { contactLinks } from '../constants/siteContent'
 
 export function HomePage() {
   const projectsTrackRef = useRef<HTMLDivElement | null>(null)
@@ -35,14 +36,14 @@ export function HomePage() {
             </p>
             <div className="flex flex-col gap-4 pt-4 sm:flex-row">
               <a
-                href="tel:+79990000000"
+                href="tel:+7 747 863 1598"
                 className="flex items-center justify-center gap-2 rounded-md bg-secondary px-8 py-4 text-lg font-bold text-white shadow-lg shadow-secondary/20 transition-all duration-300 hover:bg-secondary-container"
               >
                 <span className="material-symbols-outlined">phone</span>
                 Позвонить
               </a>
               <a
-                href="#"
+                 href={contactLinks.whatsapp}
                 className="flex items-center justify-center gap-2 rounded-md bg-surface-container-lowest px-8 py-4 text-lg font-bold text-primary transition-all duration-300 hover:bg-surface-bright"
               >
                 <span className="material-symbols-outlined">chat</span>
@@ -248,18 +249,37 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-surface-container py-16">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <h3 className="mb-12 text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant">Нам доверяют</h3>
-          <div className="flex flex-wrap items-center justify-center gap-12 opacity-40 grayscale md:gap-24">
-            <div className="h-8 w-32 rounded bg-slate-400" />
-            <div className="h-8 w-40 rounded bg-slate-400" />
-            <div className="h-8 w-28 rounded bg-slate-400" />
-            <div className="h-8 w-36 rounded bg-slate-400" />
-            <div className="h-8 w-32 rounded bg-slate-400" />
-          </div>
+     <section className="bg-surface-container py-16">
+      <div className="mx-auto max-w-7xl px-6 text-center">
+       <h3 className="mb-12 text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-black">
+          Нам доверяют
+        </h3>
+        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+          {[
+            'ТОО VODKANOT',
+            'ТОО HYDROSTA',
+            'TOO Союз Тех Строй',
+            'TOO Atomic Heart',
+            'Toyota Center Almaty',
+            'Шинный Cклад',
+            'Hyundai Trans Almaty',
+            'Astana Motors',
+            'Kaspi Bank',
+            'Кок-Тюбе',
+            'Remizovka',
+            'Горный Гигант',
+            'Казахфильм',
+          ].map((company) => (
+            <div
+              key={company}
+              className="text-black font-medium transition-transform duration-300 hover:scale-105 hover:drop-shadow-md"
+            >
+              {company}
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
     </>
   )
 }
