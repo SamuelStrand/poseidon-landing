@@ -40,7 +40,7 @@ export function PrivateClientsPage() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-4">
-          <a href="tel:+79990000000" className="rounded-md bg-primary px-8 py-4 font-bold text-on-primary">
+          <a href="tel:+7 747 863 1598" className="rounded-md bg-primary px-8 py-4 font-bold text-on-primary">
             Позвонить инженеру
           </a>
           <Link to="/cases" className="rounded-md bg-surface-container-low px-8 py-4 font-bold text-primary">

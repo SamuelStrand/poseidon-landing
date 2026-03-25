@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa'
+import { contactLinks } from '../constants/siteContent'
 
 const CASE_PROJECTS = [
   {
@@ -271,7 +273,7 @@ export function CasesPage() {
               </div>
               <div className="pt-4">
                 <a
-                  href="tel:+79990000000"
+                  href={contactLinks.whatsapp}
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-primary py-5 font-headline text-lg font-bold text-on-primary transition-colors hover:bg-primary-container"
                 >
                   <span className="material-symbols-outlined">chat_bubble</span>
@@ -293,28 +295,29 @@ export function CasesPage() {
           <h2 className="relative z-10 mb-8 font-headline text-4xl font-extrabold text-primary md:text-5xl">
             Готовы к обновлению?
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-5">
             <a
-              href="#"
-              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-8 py-4 transition-all hover:shadow-lg active:scale-95"
+              href={contactLinks.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-8 py-4 transition-all hover:shadow-lg active:scale-95"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  chat
-                </span>
+              <div className="flex h-50 w-50 items-center justify-center rounded-full bg-white">
+                <FaWhatsapp size={30} className="text-[#25D366]" />
               </div>
               <span className="font-bold text-slate-900">WhatsApp</span>
             </a>
+
             <a
-              href="#"
-              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-8 py-4 transition-all hover:shadow-lg active:scale-95"
+              href={contactLinks.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-8 py-4 transition-all hover:shadow-lg active:scale-95"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0088CC] text-white">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  send
-                </span>
+              <div className="flex h-50 w-50 items-center justify-center rounded-full bg-white">
+                <FaInstagram size={30} className="text-[#E1306C]" />
               </div>
-              <span className="font-bold text-slate-900">Telegram</span>
+              <span className="font-bold text-slate-900">Instagram</span>
             </a>
           </div>
         </div>

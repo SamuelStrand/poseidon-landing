@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { contactLinks } from '../constants/siteContent'
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa'
 
 export function ContactsPage() {
   const tel = contactLinks.phoneTel
@@ -46,29 +47,26 @@ export function ContactsPage() {
                 {contactLinks.phone}
               </a>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <a
-                  href={contactLinks.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-3 rounded-xl bg-[#25D366]/20 px-4 py-4 font-bold backdrop-blur-sm transition hover:bg-[#25D366]/30"
-                >
-                  <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-                    chat
-                  </span>
-                  WhatsApp
-                </a>
-                <a
-                  href={contactLinks.telegram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-3 rounded-xl bg-[#0088cc]/20 px-4 py-4 font-bold backdrop-blur-sm transition hover:bg-[#0088cc]/30"
-                >
-                  <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-                    send
-                  </span>
-                  Telegram
-                </a>
-              </div>
+                  <a
+                    href={contactLinks.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-3 rounded-xl bg-[#25D366]/20 px-4 py-4 font-bold backdrop-blur-sm transition hover:bg-[#25D366]/30"
+                  >
+                    <FaWhatsapp className="text-xl text-[#25D366]" />
+                    WhatsApp
+                  </a>
+
+                  <a
+                    href={contactLinks.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-3 rounded-xl bg-[#E1306C]/20 px-4 py-4 font-bold backdrop-blur-sm transition hover:bg-[#E1306C]/30"
+                  >
+                    <FaInstagram className="text-xl text-[#E1306C]" />
+                    Instagram
+                  </a>
+                </div>
             </div>
           </div>
 

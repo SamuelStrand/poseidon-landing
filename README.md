@@ -16,6 +16,7 @@
 ```bash
 npm install
 npm run dev
+npm install react-icons
 ```
 
 ## Проверки
