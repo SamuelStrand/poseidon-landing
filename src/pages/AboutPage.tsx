@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { companyProjects, partnerCompanies } from '../constants/companyContent'
 
 export function AboutPage() {
   return (
@@ -66,6 +67,43 @@ export function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-label text-xs font-bold uppercase tracking-[0.2em] text-secondary">Партнёры и объекты</p>
+            <h2 className="mt-3 font-headline text-4xl font-extrabold tracking-tight text-primary">Опыт на реальных площадках</h2>
+          </div>
+          <p className="max-w-xl text-on-surface-variant">
+            Работаем с частными и коммерческими объектами: от коттеджей до промышленных цехов и инфраструктуры.
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-surface-container-low p-8">
+          <h3 className="mb-6 font-headline text-xl font-bold text-primary">Сотрудничали с компаниями</h3>
+          <div className="flex flex-wrap gap-3">
+            {partnerCompanies.map((p) => (
+              <span key={p} className="rounded-full bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-primary ghost-border">
+                {p}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {companyProjects.map((proj) => (
+            <div key={proj.name} className="rounded-2xl bg-surface-container-lowest p-6 shadow-sm">
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <div className="font-headline text-lg font-bold text-primary">{proj.name}</div>
+                  {proj.sector ? <div className="mt-2 text-sm text-on-surface-variant">{proj.sector}</div> : null}
+                </div>
+                <span className="material-symbols-outlined text-outline-variant opacity-50">architecture</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

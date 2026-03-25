@@ -1,19 +1,8 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { contactLinks } from '../constants/siteContent'
+import { reviews, whyUsItems } from '../constants/companyContent'
 
 export function HomePage() {
-  const projectsTrackRef = useRef<HTMLDivElement | null>(null)
-
-  const scrollProjects = (direction: 'left' | 'right') => {
-    if (!projectsTrackRef.current) return
-    const cardWidth = 450
-    const gap = 24
-    const delta = cardWidth + gap
-    const left = direction === 'left' ? -delta : delta
-    projectsTrackRef.current.scrollBy({ left, behavior: 'smooth' })
-  }
-
   return (
     <>
       <section className="relative flex min-h-[870px] items-center overflow-hidden bg-primary-container text-on-primary">
@@ -194,58 +183,119 @@ export function HomePage() {
       </section>
 
       <section className="overflow-hidden bg-primary py-24 text-white">
-        <div className="mx-auto mb-12 flex max-w-7xl items-end justify-between px-6">
-          <div>
-            <h2 className="mb-4 font-headline text-4xl font-extrabold tracking-tight">Наши проекты</h2>
-            <p className="text-primary-fixed-dim">Галерея реализованных объектов премиум-класса</p>
+        <div className="mx-auto mb-12 max-w-7xl px-6">
+          <h2 className="mb-4 font-headline text-4xl font-extrabold tracking-tight">Наши проекты</h2>
+          <p className="text-primary-fixed-dim">Галерея реализованных объектов премиум-класса</p>
+        </div>
+
+        <div className="mx-auto max-w-7xl">
+          {(() => {
+            const cards: Array<{ kind: string; title: string; image: string }> = [
+              {
+                kind: 'КОММЕРЧЕСКИЙ ОБЪЕКТ',
+                title: 'Тойота центр Алматы',
+                image:
+                  'https://lh3.googleusercontent.com/aida-public/AB6AXuDgQlcYKYa30sBG_oEg6QA7FgUfjijRb2uMIi7DZ-u0VsSmTFfzRW2uof8fXw8ZmROmDs6q80hj-dlg86cbjeK6nJatSx8qRr60MMV0ltAfA_3uhBiOQudypgLNFwkvEBF6PYvZDy9pS7OfbvLIqocmpbdI58ULhdQ8oF_RDj4DVNQgaAlLbOiJwn5YAQaBujoycPnFqhJt-CJoTyRskaf0OTRkVt0APliY9BbvRZMc0-UtMKG856MDuRNFB-lbjFJC2Z8g7DcIxdBr',
+              },
+              {
+                kind: 'ИНФРАСТРУКТУРА',
+                title: 'КАСПИЙ ЦОД, мкр Алатау',
+                image:
+                  'https://lh3.googleusercontent.com/aida-public/AB6AXuAX8PgKgcFk3czkgsUg5hFRgC1JBSxq6ZO2cgkxzLXwgQ26pe1vzKSZmSTEafncCXD97Yjyal06b10FdzuAqJigYmVavwwZtrtm4EdgOhvr-uQosBzuOxC_1L_KkWfwXz_Pv_qQoSKwlM7OhrE4qqZ9srhOsMm57rYwa6NonvWCh5PaogcGM62L2nuoe9Lu2Y_xlpF8GGO-VjQG0GEX36mfFJvomcsujW79F6JIUqkH7p-BrBpdKhPrIN-42ojTfNbeEKfR0QhsyQpL',
+              },
+              {
+                kind: 'ПРОМЫШЛЕННОСТЬ',
+                title: 'Хундай завод: катафарезный цех',
+                image:
+                  'https://lh3.googleusercontent.com/aida-public/AB6AXuA89G7TiCkLpSDyVGtyQfcgNs_v8te3ecMDDMaB2P3kXpje6VwXGpqojw28cVeoFPcNkZI6HI5m5a06hdxy31BSz-xofRoUP1gNx5jb53Sm3x5_oqc-TQJL64fMR29VODgo5TLOZXTr285x5RcoudnEbq0MZHplHhgcNM1cZzVRs7ErOchMawWGy3CZB5Eqd5Grj5fZ1xQdcdl-k79_j_wwh6BXEoCzjtqMTK3B3IBVvPXIOuHre8L-R3r18L5VDP2w2RjySOAUx_tF',
+              },
+            ]
+
+            const Card = ({ card }: { card: (typeof cards)[number] }) => (
+              <div className="w-80 flex-none md:w-auto">
+                <Link
+                  to="/cases"
+                  className="group relative block overflow-hidden rounded-xl"
+                  aria-label={`Открыть кейс: ${card.title}`}
+                >
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8">
+                    <span className="mb-2 text-xs font-bold tracking-widest text-secondary-fixed-dim">{card.kind}</span>
+                    <h4 className="text-xl font-bold">{card.title}</h4>
+                  </div>
+                </Link>
+              </div>
+            )
+
+            return (
+              <>
+                <div className="md:hidden">
+                  <div className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-8">
+                    {cards.map((card) => (
+                      <Card key={card.title} card={card} />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="hidden md:grid md:grid-cols-3 gap-6 px-6 pb-8">
+                  {cards.map((card) => (
+                    <Card key={card.title} card={card} />
+                  ))}
+                </div>
+              </>
+            )
+          })()}
+        </div>
+      </section>
+
+      <section className="bg-surface py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 font-headline text-4xl font-extrabold tracking-tight text-primary">Почему выбирают нас</h2>
+            <p className="text-on-surface-variant">Работаем аккуратно, быстро и по технологии — от заявки до сдачи объекта.</p>
           </div>
-          <div className="flex gap-4">
-            <button
-              type="button"
-              aria-label="Показать предыдущий проект"
-              onClick={() => scrollProjects('left')}
-              className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10"
-            >
-              <span className="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button
-              type="button"
-              aria-label="Показать следующий проект"
-              onClick={() => scrollProjects('right')}
-              className="flex h-12 w-12 items-center justify-center rounded-md border border-white/20 transition-colors hover:bg-white/10"
-            >
-              <span className="material-symbols-outlined">chevron_right</span>
-            </button>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {whyUsItems.map((item) => (
+              <div key={item.title} className="rounded-xl bg-surface-container-low p-6 text-center">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-surface-container-high">
+                  <span className="material-symbols-outlined text-2xl text-secondary">{item.icon}</span>
+                </div>
+                <div className="text-sm font-bold text-primary">{item.title}</div>
+              </div>
+            ))}
           </div>
         </div>
-        <div ref={projectsTrackRef} className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-8">
-          {[
-            [
-              'Жилой комплекс',
-              'Пентхаус на Остоженке',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuDgQlcYKYa30sBG_oEg6QA7FgUfjijRb2uMIi7DZ-u0VsSmTFfzRW2uof8fXw8ZmROmDs6q80hj-dlg86cbjeK6nJatSx8qRr60MMV0ltAfA_3uhBiOQudypgLNFwkvEBF6PYvZDy9pS7OfbvLIqocmpbdI58ULhdQ8oF_RDj4DVNQgaAlLbOiJwn5YAQaBujoycPnFqhJt-CJoTyRskaf0OTRkVt0APliY9BbvRZMc0-UtMKG856MDuRNFB-lbjFJC2Z8g7DcIxdBr',
-            ],
-            [
-              'Бизнес-центр',
-              'БЦ "Метрополис"',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuAX8PgKgcFk3czkgsUg5hFRgC1JBSxq6ZO2cgkxzLXwgQ26pe1vzKSZmSTEafncCXD97Yjyal06b10FdzuAqJigYmVavwwZtrtm4EdgOhvr-uQosBzuOxC_1L_KkWfwXz_Pv_qQoSKwlM7OhrE4qqZ9srhOsMm57rYwa6NonvWCh5PaogcGM62L2nuoe9Lu2Y_xlpF8GGO-VjQG0GEX36mfFJvomcsujW79F6JIUqkH7p-BrBpdKhPrIN-42ojTfNbeEKfR0QhsyQpL',
-            ],
-            [
-              'Загородный дом',
-              'Вилла в Барвихе',
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuA89G7TiCkLpSDyVGtyQfcgNs_v8te3ecMDDMaB2P3kXpje6VwXGpqojw28cVeoFPcNkZI6HI5m5a06hdxy31BSz-xofRoUP1gNx5jb53Sm3x5_oqc-TQJL64fMR29VODgo5TLOZXTr285x5RcoudnEbq0MZHplHhgcNM1cZzVRs7ErOchMawWGy3CZB5Eqd5Grj5fZ1xQdcdl-k79_j_wwh6BXEoCzjtqMTK3B3IBVvPXIOuHre8L-R3r18L5VDP2w2RjySOAUx_tF',
-            ],
-          ].map(([kind, title, image]) => (
-            <div key={title} className="w-80 flex-none md:w-[450px]">
-              <Link to="/cases" className="group relative block cursor-pointer overflow-hidden rounded-xl" aria-label={`Открыть кейс: ${title}`}>
-                <img src={image} alt={title} className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8">
-                  <span className="mb-2 text-xs font-bold uppercase tracking-widest text-secondary-fixed-dim">{kind}</span>
-                  <h4 className="text-xl font-bold">{title}</h4>
+      </section>
+
+      <section className="bg-surface-container-low py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 font-headline text-4xl font-extrabold tracking-tight text-primary">Отзывы</h2>
+            <p className="text-on-surface-variant">Реальные впечатления клиентов — кратко и по делу.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {reviews.map((r) => (
+              <article key={r.name} className="rounded-xl bg-surface-container-lowest p-8 shadow-sm">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="font-headline text-lg font-bold text-primary">{r.name}</div>
+                    <div className="mt-2 flex gap-1 text-secondary" aria-label="Рейтинг 5 из 5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <span key={i} className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>
+                          star
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </Link>
-            </div>
-          ))}
+                <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">{r.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

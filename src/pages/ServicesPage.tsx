@@ -1,57 +1,65 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { companyServiceCategories } from '../constants/companyContent'
 
 type ServiceItem = {
   icon: string
   title: string
   description: string
+  bullets?: string[]
   variant: 'default' | 'emergency'
   ctaLabel: string
-  image?: string
-  tall?: boolean
 }
 
 const PRIVATE_SERVICES: ServiceItem[] = [
   {
-    icon: 'water_drop',
-    title: 'Водоподготовка и фильтрация',
-    description:
-      'Индивидуальное проектирование систем очистки воды. Удаление примесей, умягчение и минерализация для вашего здоровья.',
+    icon: 'warning',
+    title: 'Аварийный выезд',
+    description: 'Срочный выезд мастера для устранения аварийных ситуаций и восстановительных работ.',
+    bullets: ['Прорыв трубы', 'Ремонт сантехники', 'Устранение аварий', 'Замена сантехники'],
     variant: 'default',
     ctaLabel: 'Связаться',
   },
   {
     icon: 'heat_pump',
-    title: 'Инженерные сети отопления',
-    description:
-      'Установка котлов, тёплых полов и радиаторных систем. Гарантируем энергоэффективность и идеальный микроклимат.',
+    title: 'Монтаж отопления',
+    description: 'Проектирование и монтаж систем отопления для квартир, домов и коттеджей.',
+    bullets: ['Проектирование', 'Промывка отопления', 'Монтаж отопления', 'Установка радиаторов'],
     variant: 'default',
     ctaLabel: 'Связаться',
   },
   {
     icon: 'plumbing',
-    title: 'Аварийная служба 24/7',
+    title: 'Монтаж канализации',
     description:
-      'Моментальное реагирование на протечки и поломки. Команда прибудет в течение 60 минут в любую точку города.',
+      'Бытовая и дренажная канализация: стояки, разводка под оборудование и монтаж трасс по проекту.',
+    bullets: ['Канализация дома', 'Замена канализации', 'Прочистка канализации', 'Автономная канализация'],
     variant: 'emergency',
-    ctaLabel: 'Вызвать мастера',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCye_Cb0lzFKKuz14hf_CtVjNHSt1z0evsQrKfH-1l9qAi5Lj5M_JsatJdWvVx3F2P3WG_GrPsWIJHv_jshCTMN0QhGV75apcQL2HZQovhJBkKpDjTb12NLn2wgH5AdclSFh9cgMWacxzXi1dhfvBMUm7tGma4z8AZK2Y6RSXeanM-KaAzV2lWNihO4UPDApmURmN_G9V6NaEQ8pPp0OqqRWe683-XMw2DdqmXSooy6yA83we-frgHeRlu4E1c1mHvW1e-YaGDhQf7U',
-    tall: true,
+    ctaLabel: 'Связаться',
   },
   {
-    icon: 'smart_toy',
-    title: 'Умный дом: водоснабжение',
+    icon: 'bathroom',
+    title: 'Установка сантехники',
     description:
-      'Интеграция датчиков протечки, автоматических перекрывателей и удалённого мониторинга расхода воды в ваш смартфон.',
+      'Установка и замена сантехнических приборов и комплектующих с аккуратной подводкой и проверкой герметичности.',
+    bullets: ['Установка унитаза', 'Установка смесителя', 'Установка счётчиков', 'Установка раковины/мойки'],
     variant: 'default',
     ctaLabel: 'Связаться',
   },
   {
-    icon: 'construction',
-    title: 'Сервисное обслуживание',
+    icon: 'speed',
+    title: 'Устранение засоров',
     description:
-      'Регулярная диагностика и чистка систем. Продлеваем срок службы оборудования и снижаем риск внеплановых поломок.',
+      'Оперативная прочистка и восстановление проходимости: от локальных засоров до сложных участков трассы.',
+    bullets: ['Чистка ванны', 'Чистка унитаза', 'Чистка труб', 'Чистка раковины и мойки'],
+    variant: 'default',
+    ctaLabel: 'Связаться',
+  },
+  {
+    icon: 'speed',
+    title: 'Установка счётчиков',
+    description: 'Подбор и установка приборов учёта воды с корректной обвязкой и проверкой.',
+    bullets: ['Вихревые', 'Тахометрические', 'Ультразвуковые', 'Электромагнитные'],
     variant: 'default',
     ctaLabel: 'Связаться',
   },
@@ -59,42 +67,43 @@ const PRIVATE_SERVICES: ServiceItem[] = [
 
 const BUSINESS_SERVICES: ServiceItem[] = [
   {
-    icon: 'apartment',
-    title: 'Проектирование для ЖК и БЦ',
-    description:
-      'Гидравлические расчёты, спецификации, узлы ввода и согласование с генподрядчиком. Работаем в формате EPC и по этапам.',
-    variant: 'default',
-    ctaLabel: 'Запросить КП',
-  },
-  {
-    icon: 'precision_manufacturing',
-    title: 'Монтаж инженерных систем',
-    description:
-      'Коллекторные узлы, насосные станции, пожаротушение и водоподготовка на объектах повышенной сложности.',
+    icon: companyServiceCategories[0]?.icon ?? 'heat_pump',
+    title: companyServiceCategories[0]?.title ?? 'Монтаж отопления и котельных',
+    description: 'Проектирование, монтаж и подбор оборудования для котельных и систем отопления на объектах.',
+    bullets: companyServiceCategories[0]?.bullets ?? [],
     variant: 'default',
     ctaLabel: 'Обсудить объект',
   },
   {
-    icon: 'engineering',
-    title: 'Техническое обслуживание',
-    description:
-      'Регламентные обходы, журналы, SLA и дежурные бригады. Минимизируем простои критичной инфраструктуры.',
+    icon: companyServiceCategories[1]?.icon ?? 'water_drop',
+    title: companyServiceCategories[1]?.title ?? 'Водопровод (ХВС) и сантехника',
+    description: 'Прокладка трубопроводов, монтаж приборов и узлов водоснабжения для коммерческих объектов.',
+    bullets: companyServiceCategories[1]?.bullets ?? [],
     variant: 'default',
-    ctaLabel: 'Связаться',
+    ctaLabel: 'Обсудить объект',
   },
   {
-    icon: 'analytics',
-    title: 'Аудит и модернизация',
-    description:
-      'Обследование изношенных сетей, энергоаудит насосного оборудования, дорожная карта замены без остановки бизнеса.',
+    icon: companyServiceCategories[2]?.icon ?? 'plumbing',
+    title: companyServiceCategories[2]?.title ?? 'Монтаж канализации',
+    description: 'Монтаж бытовой и дренажной канализации: стояки, разводка и трассы под оборудование.',
+    bullets: companyServiceCategories[2]?.bullets ?? [],
     variant: 'default',
-    ctaLabel: 'Заказать аудит',
+    ctaLabel: 'Обсудить объект',
+  },
+  {
+    icon: companyServiceCategories[3]?.icon ?? 'local_fire_department',
+    title: companyServiceCategories[3]?.title ?? 'Пожарный трубопровод',
+    description: 'АПТ, спринклерные узлы, пожарные шкафы и трассировка систем по требованиям объекта.',
+    bullets: companyServiceCategories[3]?.bullets ?? [],
+    variant: 'default',
+    ctaLabel: 'Обсудить объект',
   },
   {
     icon: 'local_fire_department',
-    title: 'Критичные системы',
+    title: 'Системы для объектов и поддержка',
     description:
-      'Пожарные насосные, резервирование водоснабжения, узлы учёта и диспетчеризация — с полным пакетом исполнительной документации.',
+      'Фанкойлы, тепловые завесы, «вулканы», котельные и регламентные работы — под задачу и специфику объекта.',
+    bullets: ['Фанкойлы', 'Тепловые завесы', 'Котельные (сборка/демонтаж/монтаж)', 'Подбор оборудования'],
     variant: 'default',
     ctaLabel: 'Связаться',
   },
@@ -163,9 +172,7 @@ export function ServicesPage() {
           {services.map((item) => (
             <article
               key={item.title}
-              className={`service-card-hover group relative flex min-h-[400px] flex-col justify-between overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-primary-container ${
-                item.tall ? 'md:row-span-2' : ''
-              }`}
+              className="service-card-hover group relative flex min-h-[400px] flex-col justify-between overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-primary-container"
             >
               <div className="static-content">
                 <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-surface-container-highest transition-colors duration-500 group-hover:bg-secondary">
@@ -176,18 +183,22 @@ export function ServicesPage() {
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-primary transition-colors duration-500 group-hover:text-white">
                   {item.title}
                 </h2>
-                {item.variant === 'emergency' ? (
-                  <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-error">
-                    <span className="h-2 w-2 animate-pulse rounded-full bg-error" />
-                    Live Now
-                  </div>
-                ) : null}
               </div>
 
               <div className="hover-content mt-4">
                 <p className="mb-8 font-body leading-relaxed text-on-surface-variant group-hover:text-slate-300">
                   {item.description}
                 </p>
+                {item.bullets?.length ? (
+                  <ul className="mb-8 space-y-2 text-sm text-on-surface-variant group-hover:text-slate-300">
+                    {item.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
                 <a
                   href="tel:+7 747 863 1598"
                   className={`flex w-full items-center justify-center gap-2 rounded-md py-4 font-bold ${
@@ -198,20 +209,10 @@ export function ServicesPage() {
                 >
                   {item.ctaLabel}
                   <span className="material-symbols-outlined text-lg">
-                    {item.variant === 'emergency' ? 'emergency_home' : 'arrow_forward'}
+                    {item.variant === 'emergency' ? 'arrow_forward' : 'arrow_forward'}
                   </span>
                 </a>
               </div>
-
-              {item.image ? (
-                <div className="mt-8 overflow-hidden rounded-lg">
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="h-48 w-full object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-100"
-                  />
-                </div>
-              ) : null}
 
               <span className="material-symbols-outlined pointer-events-none absolute bottom-4 right-4 text-4xl text-outline-variant opacity-10">
                 architecture
